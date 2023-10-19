@@ -1,0 +1,67 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container-fluid">
+    <h3 class="text-light">Contact Management System Crud</h3>
+    <div class="btns">
+      <button class="btn btn-success" routerLink="/add-contact">
+        Add Contact</button
+      >&nbsp;
+      <button
+        class="btn btn-danger"
+        routerLink="/login-signup"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Image Section -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="image mw-100">
+        <img
+          class="img-fluid"
+          src="../../../assets/The-short-guide-to-Contact-Management-1024x576.png"
+          alt="Management"
+        />
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="col-sm-6 mt-5">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>F.Name</th>
+            <th>L.Name</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td>{{ contact.firstName }}</td>
+            <td>{{ contact.lastName }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.city }}</td>
+            <td class="text-center btns">
+              <i
+                class="fas fa-edit text-success"
+                routerLink="/update-contact/{{ contact.id }}"
+              ></i
+              >&nbsp;
+              <i
+                class="fas fa-trash text-danger"
+                (click)="delete(contact.id)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

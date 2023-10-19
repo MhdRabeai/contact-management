@@ -1,0 +1,125 @@
+<!-- Login -->
+<section class="vh-100" style="background-color: #508bfc" *ngIf="!isShow">
+  <div class="container py-4 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5">
+            <div class="card-head text-center">
+              <h3 class="mb-5">Sign in</h3>
+              <h5 class="fw-normal mb-3 pb-2" style="letter-spacing: 1px">
+                Login Into Your Account
+              </h5>
+            </div>
+            <form [formGroup]="loginForm">
+              <div class="mb-4">
+                <label class="form-label" for="typeEmailX-2">Email :</label>
+                <input
+                  type="email"
+                  id="typeEmailX-2"
+                  class="form-control form-control-lg"
+                  formControlName="email"
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="typePasswordX-2"
+                  >Password :</label
+                >
+                <input
+                  type="password"
+                  id="typePasswordX-2"
+                  class="form-control form-control-lg"
+                  formControlName="password"
+                />
+              </div>
+
+              <div class="pt-1 mb-1 text-center">
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  type="submit"
+                  (click)="submitLogin()"
+                  [disabled]="loginForm.invalid"
+                >
+                  Login
+                </button>
+                <p class="mt-4 pb-lg-2">
+                  Don't Have An Account?
+                  <a class="fw-bold" (click)="switch()"> SignUp Here</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sing Up -->
+
+<section class="vh-100" style="background-color: #508bfc" *ngIf="isShow">
+  <div class="container py-4 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body px-5 py-4">
+            <div class="card-head text-center mt-2">
+              <h3 class="mb-4">SignUp</h3>
+              <h5 class="fw-normal mb-3 pb-2" style="letter-spacing: 1px">
+                SignUp Into Your Account
+              </h5>
+            </div>
+            <form [formGroup]="signupForm">
+              <div class="mb-3">
+                <label class="form-label" for="typename-2">Name :</label>
+                <input
+                  type="text"
+                  id="typename-2"
+                  class="form-control form-control-lg"
+                  formControlName="name"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="typeEmailX-2">Email :</label>
+                <input
+                  type="email"
+                  id="typeEmailX-2"
+                  class="form-control form-control-lg"
+                  formControlName="email"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="typePasswordX-2"
+                  >Password :</label
+                >
+                <input
+                  type="password"
+                  id="typePasswordX-2"
+                  class="form-control form-control-lg"
+                  formControlName="password"
+                />
+              </div>
+
+              <div class="pt-1 mb-1 text-center">
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  type="submit"
+                  (click)="submitSignUp()"
+                  [disabled]="signupForm.invalid"
+                >
+                  SignUp
+                </button>
+                <p class="mt-3 pb-lg-2">
+                  Have An Account?
+                  <a class="fw-bold" (click)="switch()">Login Here</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

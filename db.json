@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "firstName": "mhd",
+      "lastName": "mm",
+      "phone": "0991708964",
+      "city": "Damascus",
+      "id": 1
+    }
+  ],
+  "singUp": [
+    {
+      "name": "mohamad",
+      "email": "mhd.rabea.naser@gmail.com",
+      "password": "123456",
+      "id": 1
+    }
+  ]
+}
