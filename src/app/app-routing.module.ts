@@ -1,3 +1,4 @@
+import { AdminLoginSignupComponent } from './components/admin-login-signup/admin-login-signup.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ const routes: Routes = [
   },
   { path: 'login-signup', component: LoginSignupComponent },
   { path: 'server-error', component: ServerErrorComponent },
+  { path: 'admin-login', component: AdminLoginSignupComponent },
   { path: '', redirectTo: 'login-signup', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

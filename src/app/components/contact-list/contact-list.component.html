@@ -20,7 +20,7 @@
 <!-- Image Section -->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-3 col-md-4">
       <div class="image mw-100">
         <img
           class="img-fluid"
@@ -31,8 +31,19 @@
     </div>
 
     <!-- Table -->
-    <div class="col-sm-6 mt-5">
-      <table class="table table-borderless">
+    <div class="col-sm-6 col-md-7 mt-5">
+      <!-- Search Box -->
+      <div class="form-outline mt-3 mb-3">
+        <input
+          type="search"
+          id="form1"
+          class="form-control"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchText"
+        />
+      </div>
+      <table class="table table-borderless" style="margin-bottom: 150px">
         <thead>
           <tr>
             <th>F.Name</th>
@@ -43,7 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let contact of contacts">
+          <tr *ngFor="let contact of contacts | filter : searchText">
             <td>{{ contact.firstName }}</td>
             <td>{{ contact.lastName }}</td>
             <td>{{ contact.phone }}</td>
@@ -62,6 +73,103 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div
+    class="footer bg-primary text-light w-100 text-center d-flex flex-wrap align-items-center justify-content-evenly"
+  >
+    <h5 class="fs-4 m-0">@copyright 2023 Contact Managment System Curd</h5>
+    <button
+      class="btn btn-sm btn-dark mt-1"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      Contact Us
+    </button>
+
+    <!-- Footer Modal -->
+
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog text-dark">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Contact Us
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form style="text-align: left !important" [formGroup]="msgForm">
+              <div class="mb-3">
+                <label for="exampleInputName1" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName1"
+                  aria-describedby="NameHelp"
+                  formControlName="name"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  formControlName="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputMessage1" class="form-label"
+                  >Message</label
+                >
+                <textarea
+                  id="exampleInputMessage1"
+                  class="form-control"
+                  cols="30"
+                  rows="5"
+                  style="resize: none"
+                  formControlName="message"
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="sendMsg(msgForm.value)"
+              [disabled]="msgForm.invalid"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

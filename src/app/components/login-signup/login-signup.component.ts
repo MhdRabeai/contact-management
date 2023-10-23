@@ -55,17 +55,23 @@ export class LoginSignupComponent implements OnInit {
         }
       },
       (err) => {
-        alert('Something Went Wrong Try After Sometime');
         this.loginForm.reset();
+        this.router.navigate(['/server-error']);
       }
     );
   }
   submitSignUp() {
     this.http
       .post<SignUp>('http://localhost:3000/singUp', this.signupForm.value)
-      .subscribe(() => {
-        alert('User SingedUp Successfully!!');
-        this.signupForm.reset();
-      });
+      .subscribe(
+        () => {
+          alert('User SingedUp Successfully!!');
+          this.signupForm.reset();
+        },
+        (err) => {
+          this.signupForm.reset();
+          this.router.navigate(['/server-error']);
+        }
+      );
   }
 }

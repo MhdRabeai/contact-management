@@ -12,9 +12,11 @@ import { UpdateContactComponent } from './components/update-contact/update-conta
 import { LoginSignupComponent } from './components/login-signup/login-signup.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { AdminLoginSignupComponent } from './components/admin-login-signup/admin-login-signup.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactListComponent, AddContactComponent, UpdateContactComponent, LoginSignupComponent, NotFoundComponent, ServerErrorComponent],
+  declarations: [AppComponent, ContactListComponent, AddContactComponent, UpdateContactComponent, LoginSignupComponent, NotFoundComponent, ServerErrorComponent, FilterPipe, AdminLoginSignupComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -11,3 +11,19 @@ thead {
 tbody {
   border: 1px solid #999;
 }
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+}
+@media (max-width: 575px) {
+  .footer {
+    bottom: -225 !important;
+  }
+}
+@media (max-width: 646px) {
+  .footer {
+    bottom: -215px;
+  }
+}

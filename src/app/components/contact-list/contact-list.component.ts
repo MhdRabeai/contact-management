@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Contact } from 'src/app/model/contact';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Contact, contactUs } from 'src/app/model/contact';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -9,9 +10,16 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ContactListComponent {
   contacts!: Contact[];
-  constructor(private api: ApiService) {}
+  searchText!: any;
+  msgForm!: FormGroup;
+  constructor(private api: ApiService, private fb: FormBuilder) {}
   ngOnInit(): void {
     this.getContact();
+    this.msgForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      message: ['', Validators.required],
+    });
   }
   getContact() {
     this.api.getContacts().subscribe((res) => {
@@ -28,5 +36,11 @@ export class ContactListComponent {
   }
   logout() {
     localStorage.removeItem('loginData');
+  }
+  sendMsg(data: contactUs) {
+    this.api.contactus(data).subscribe(() => {
+      alert('Data Submitted Successfully!!');
+      this.msgForm.reset();
+    });
   }
 }

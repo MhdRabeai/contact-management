@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contact } from '../model/contact';
+import { Contact, contactUs } from '../model/contact';
 
 @Injectable({
   providedIn: 'root',
@@ -9,21 +9,37 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getContacts() {
-    return this.http.get<Contact[]>('http://localhost:3000/contacts');
+    return this.http.get<Contact[]>(
+      'https://json-server-avob.onrender.com/contacts'
+    );
   }
   addContact(data: Contact) {
-    return this.http.post<Contact[]>('http://localhost:3000/contacts', data);
+    return this.http.post<Contact[]>(
+      'https://json-server-avob.onrender.com/contacts',
+      data
+    );
   }
   deleteContact(id: number) {
-    return this.http.delete<Contact[]>('http://localhost:3000/contacts/' + id);
+    return this.http.delete<Contact[]>(
+      'https://json-server-avob.onrender.com/contacts/' + id
+    );
   }
   fetchDate(id: number) {
-    return this.http.get<Contact[]>('http://localhost:3000/contacts/' + id);
+    return this.http.get<Contact[]>(
+      'https://json-server-avob.onrender.com/contacts/' + id
+    );
   }
   updateContact(id: number, date: Contact) {
     return this.http.put<Contact[]>(
-      'http://localhost:3000/contacts/' + id,
+      'https://json-server-avob.onrender.com/contacts/' + id,
       date
+    );
+  }
+  // contactus
+  contactus(data: contactUs) {
+    return this.http.post<contactUs[]>(
+      'https://json-server-avob.onrender.com/contactUs',
+      data
     );
   }
 }

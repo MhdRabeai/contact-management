@@ -15,3 +15,8 @@ export class Login {
   email?: string;
   password?: number;
 }
+export class contactUs {
+  email?: string;
+  name?: string;
+  message?: string;
+}
