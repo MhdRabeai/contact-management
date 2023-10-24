@@ -1,1 +1,106 @@
-<p>admin-login-signup works!</p>
+<!-- Admin Login -->
+
+<section *ngIf="showLogin" class="vh-100" style="background-color: darkgray">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <h3>Admin Login</h3>
+            <!-- Form -->
+            <form [formGroup]="loginForm">
+              <div class="form-outline mb-4 mt-4">
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Email"
+                  formControlName="email"
+                />
+              </div>
+              <div class="form-outline mb-4 mt-4">
+                <input
+                  type="PASSWORD"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Password"
+                  formControlName="password"
+                />
+              </div>
+              <button
+                class="btn btn-primary"
+                (click)="adminLogin()"
+                [disabled]="loginForm.invalid"
+              >
+                Login</button
+              >&nbsp;
+              <button class="btn btn-danger" routerLink="/">Back</button>
+              <p class="mt-3 mb-2">Do Not Have An Account?</p>
+              <a
+                class="fw-bold"
+                style="cursor: pointer; text-decoration: none"
+                (click)="showLogin = !showLogin"
+                >Signup</a
+              >
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Admin Signup -->
+<section *ngIf="!showLogin" class="vh-100" style="background-color: darkgray">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <h3>Admin Signup</h3>
+            <!-- Form -->
+            <form [formGroup]="signupForm">
+              <div class="form-outline mb-4 mt-4">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Name"
+                  formControlName="name"
+                />
+              </div>
+              <div class="form-outline mb-4 mt-4">
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Email"
+                  formControlName="email"
+                />
+              </div>
+              <div class="form-outline mb-4 mt-4">
+                <input
+                  type="PASSWORD"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Password"
+                  formControlName="password"
+                />
+              </div>
+              <button
+                class="btn btn-primary"
+                (click)="adminSignup(signupForm.value)"
+                [disabled]="signupForm.invalid"
+              >
+                Signup</button
+              >&nbsp;
+
+              <p class="mt-3 mb-2">Have An Account?</p>
+              <a
+                class="fw-bold"
+                style="cursor: pointer; text-decoration: none"
+                (click)="showLogin = !showLogin"
+                >Login</a
+              >
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

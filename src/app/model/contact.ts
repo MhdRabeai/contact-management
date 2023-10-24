@@ -9,14 +9,24 @@ export class Contact {
 export class SignUp {
   name?: string;
   email?: string;
-  password?: number;
+  password?: string;
 }
 export class Login {
   email?: string;
-  password?: number;
+  password?: string;
 }
 export class contactUs {
   email?: string;
   name?: string;
   message?: string;
+  id?: any;
+}
+export class AdminSignup {
+  name?: string;
+  email?: string;
+  password?: string;
+}
+export class AdminLogin {
+  email?: string;
+  password?: string;
 }

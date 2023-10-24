@@ -1,3 +1,4 @@
+import { adminAuthGuard } from './shared/admin-auth.guard';
 import { AdminLoginSignupComponent } from './components/admin-login-signup/admin-login-signup.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
@@ -8,6 +9,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
 import { AuthGuard } from './shared/auth.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { AdminViewComponent } from './components/admin-view/admin-view.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,11 @@ const routes: Routes = [
   { path: 'login-signup', component: LoginSignupComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'admin-login', component: AdminLoginSignupComponent },
+  {
+    path: 'admin-view',
+    component: AdminViewComponent,
+    canActivate: [adminAuthGuard],
+  },
   { path: '', redirectTo: 'login-signup', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

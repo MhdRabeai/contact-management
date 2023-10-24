@@ -20,6 +20,11 @@ export class LoginSignupComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+    // UserData Should Not Be stored in localstorage
+    localStorage.removeItem('adminLogin');
+    localStorage.removeItem('loginData');
+
+    // *****
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -34,35 +39,40 @@ export class LoginSignupComponent implements OnInit {
     this.isShow = !this.isShow;
   }
   submitLogin() {
-    this.http.get<Login[]>('http://localhost:3000/singUp').subscribe(
-      (res) => {
-        // Matching Email And Password
-        const user = res.find((ele: any) => {
-          return (
-            ele.email === this.loginForm.value.email &&
-            ele.password === this.loginForm.value.password
-          );
-        });
-        // Check Condition For Login
-        if (user) {
-          alert('Successfully Loged In');
+    this.http
+      .get<Login[]>('https://json-server-avob.onrender.com/singUp')
+      .subscribe(
+        (res) => {
+          // Matching Email And Password
+          const user = res.find((ele: any) => {
+            return (
+              ele.email === this.loginForm.value.email &&
+              ele.password === this.loginForm.value.password
+            );
+          });
+          // Check Condition For Login
+          if (user) {
+            alert('Successfully Loged In');
+            this.loginForm.reset();
+            this.router.navigate(['/contact-list']);
+            // Storage Data In Local Storage
+            localStorage.setItem('loginData', JSON.stringify(user));
+          } else {
+            alert('User Not Found With These Credentials');
+          }
+        },
+        (err) => {
           this.loginForm.reset();
-          this.router.navigate(['/contact-list']);
-          // Storage Data In Local Storage
-          localStorage.setItem('loginData', JSON.stringify(user));
-        } else {
-          alert('User Not Found With These Credentials');
+          this.router.navigate(['/server-error']);
         }
-      },
-      (err) => {
-        this.loginForm.reset();
-        this.router.navigate(['/server-error']);
-      }
-    );
+      );
   }
   submitSignUp() {
     this.http
-      .post<SignUp>('http://localhost:3000/singUp', this.signupForm.value)
+      .post<SignUp>(
+        'https://json-server-avob.onrender.com/singUp',
+        this.signupForm.value
+      )
       .subscribe(
         () => {
           alert('User SingedUp Successfully!!');

@@ -42,4 +42,15 @@ export class ApiService {
       data
     );
   }
+  // Get Contact; Us;
+  displayContactus() {
+    return this.http.get<contactUs[]>(
+      'https://json-server-avob.onrender.com/contactUs'
+    );
+  }
+  deleteQuery(id: number) {
+    return this.http.delete<contactUs>(
+      'https://json-server-avob.onrender.com/contactUs/' + id
+    );
+  }
 }
