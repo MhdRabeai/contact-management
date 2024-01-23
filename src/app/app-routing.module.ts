@@ -10,6 +10,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { ViewContactComponent } from './components/view-contact/view-contact.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'update-contact/:id',
     component: UpdateContactComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contact/:id',
+    component: ViewContactComponent,
     canActivate: [AuthGuard],
   },
   { path: 'login-signup', component: LoginSignupComponent },

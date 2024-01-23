@@ -15,15 +15,24 @@ import { ServerErrorComponent } from './components/server-error/server-error.com
 import { FilterPipe } from './pipe/filter.pipe';
 import { AdminLoginSignupComponent } from './components/admin-login-signup/admin-login-signup.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { ViewContactComponent } from './components/view-contact/view-contact.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 @NgModule({
-  declarations: [AppComponent, ContactListComponent, AddContactComponent, UpdateContactComponent, LoginSignupComponent, NotFoundComponent, ServerErrorComponent, FilterPipe, AdminLoginSignupComponent, AdminViewComponent],
+  declarations: [AppComponent, ContactListComponent, AddContactComponent, UpdateContactComponent, LoginSignupComponent, NotFoundComponent, ServerErrorComponent, FilterPipe, AdminLoginSignupComponent, AdminViewComponent, ViewContactComponent],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NoopAnimationsModule,MatPaginatorModule,MatTableModule,MatFormFieldModule,MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

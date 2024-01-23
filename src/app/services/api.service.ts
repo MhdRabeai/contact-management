@@ -6,6 +6,7 @@ import { Contact, contactUs } from '../model/contact';
   providedIn: 'root',
 })
 export class ApiService {
+
   constructor(private http: HttpClient) {}
 
   getContacts() {
@@ -54,3 +55,5 @@ export class ApiService {
     );
   }
 }
+
+
