@@ -9,13 +9,16 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminViewComponent implements OnInit {
   data!: contactUs[];
+  isFetching = false;
   constructor(private api: ApiService) {}
   ngOnInit(): void {
+    this.isFetching=true;
     this.showContactus();
   }
 
   showContactus() {
     this.api.displayContactus().subscribe((res) => {
+      this.isFetching=false;
       this.data = res;
     });
   }

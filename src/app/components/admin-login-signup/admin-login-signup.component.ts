@@ -20,6 +20,7 @@ export class AdminLoginSignupComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+
     localStorage.removeItem('adminLogin');
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
@@ -71,6 +72,7 @@ export class AdminLoginSignupComponent implements OnInit {
             this.router.navigate(['/admin-view']);
             localStorage.setItem('adminLogin', JSON.stringify(user));
           } else {
+            // this.isFetching = true;
             alert('ith These Credentials');
             this.loginForm.reset();
           }

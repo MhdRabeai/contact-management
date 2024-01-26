@@ -21,6 +21,7 @@ export class ContactListComponent implements OnInit{
     'Action',
 
   ];
+  isFetching = false;
   contacts!: Contact[];
   searchText!: any;
   msgForm!: FormGroup;
@@ -31,16 +32,17 @@ export class ContactListComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.isFetching = true;
     this.getContact();
     this.msgForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
       message: ['', Validators.required],
     });
-   
-    
+
+
   }
-   
+
 
   getContact() {
     this.api.getContacts().subscribe((res) => {
@@ -48,10 +50,10 @@ export class ContactListComponent implements OnInit{
       this.dataSource= new MatTableDataSource(this.contacts);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate =  (data: Contact, filter: string) => {
-        console.log(filter == data.id  );
+
         return !filter || filter == data.id;
       }
-
+      this.isFetching = false;
     });
   }
   delete(id: any) {
